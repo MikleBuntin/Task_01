@@ -21,30 +21,26 @@ public class Main {
         mainJsonString.put("country","Russia");
         mainJsonString.put("city","Moscow");
         mainJsonString.put("age","null");
-        System.out.println(mainJsonString.toString());
+        System.out.println("JSon string: " + mainJsonString);
 
-        JSONParser parserString = new JSONParser();
-        Object parserObject = parserString.parse(mainJsonString.toString());
-        JSONObject jo = (JSONObject) parserObject;
-        String Name = (String) jo.get("Name");
-        
-
-//        String mainString = new String("name:\"Ivanov\", country:\"Russia\", city:\"Moscow\", age:\"null\"");
-
-//        String oldString = "select * from students where ";
         StringBuilder oldString = new StringBuilder("select * from students where ");
-
-
-        String newString = oldString.append("append # 1").toString();
-
-
-        System.out.println("string = " + oldString);
-//        System.out.println("length = " + oldString.length());
-//        System.out.println("capacity = " + oldString.capacity());
-
-//        System.out.println("Hello world!");
-
-
+        String name = (String) mainJsonString.get("name");
+        if (name != "null") {
+            oldString = oldString.append("name =\"" + name + "\"");
+        }
+        String country = (String) mainJsonString.get("country");
+        if (country != "null") {
+            oldString = oldString.append(", country =\"" + country + "\"");
+        }
+        String city = (String) mainJsonString.get("city");
+        if (city != "null") {
+            oldString = oldString.append(", city =\"" + city + "\"");
+        }
+        String age = (String) mainJsonString.get("age");
+        if (age != "null") {
+            oldString = oldString.append(", age =\"" + age + "\"");
+        }
+        System.out.println("SQL_String: " + oldString.toString());
 
     }
 }
